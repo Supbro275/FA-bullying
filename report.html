@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Report Bullying</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <h1>FA Bullying</h1>
+        <a href="/">Home</a>
+        <a href="/report">Report</a>
+    </nav>
+
+    <h2>Report Bullying</h2>
+
+    <form action="/report" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Message:</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <p>{{ messages[0] }}</p>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
